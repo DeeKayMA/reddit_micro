@@ -21,8 +21,7 @@ _A mini Reddit client_
 A mini Reddit client for Codecademy's Front End Engineering career pathway 
 
 ## 🛠 Tech Stack  
-- **Framework:** [React](https://react.dev/) / [Next.js](https://nextjs.org/)  
-- **Styling:** CSS Modules
+- **Framework:** [React](https://react.dev/)
 - **State Management:** Redux
 - **Backend (if applicable):** Node.js
 - **API:** Reddit API
@@ -31,6 +30,7 @@ A mini Reddit client for Codecademy's Front End Engineering career pathway
 
 ### 1️⃣ Clone the Repo  
 git clone https://github.com/DeeKayMA/reddit_micro.git
+<br/>
 cd reddit_micro  
 
 ### 2️⃣ Install Dependencies  
