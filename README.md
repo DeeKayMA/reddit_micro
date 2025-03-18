@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Reddit Micro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Project Banner](https://via.placeholder.com/1200x400.png?text=Project+Banner)  
+_A mini Reddit client_
 
-## Available Scripts
+## 🚀 Live Demo  
+[🔗 Click here to view the live project](#)  
 
-In the project directory, you can run:
+## 📖 Table of Contents  
+- [About the Project](#about-the-project)  
+- [Tech Stack](#tech-stack)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Environment Variables](#environment-variables)  
+- [Deployment](#deployment)  
+- [Contributing](#contributing)  
+- [License](#license)  
+- [Contact](#contact)  
 
-### `npm start`
+## 📌 About the Project  
+A mini Reddit client for Codecademy's Front End Engineering career pathway 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠 Tech Stack  
+- **Framework:** [React](https://react.dev/) / [Next.js](https://nextjs.org/)  
+- **Styling:** CSS Modules
+- **State Management:** Redux
+- **Backend (if applicable):** Node.js
+- **API:** Reddit API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⚡ Installation  
 
-### `npm test`
+### 1️⃣ Clone the Repo  
+git clone https://github.com/DeeKayMA/reddit_micro.git
+cd reddit_micro  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2️⃣ Install Dependencies  
+npm install  
+# or  
+yarn install  
 
-### `npm run build`
+### 3️⃣ Start the Development Server  
+npm start  # React  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📌 Usage  
+Explain how users can interact with the app. Include screenshots or GIFs if possible.  
+- Search for Reddit posts
+- Filter Subreddit
+- See live Reddit posts  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔑 Environment Variables  
+Create a `.env.local` file and add:  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+NEXT_PUBLIC_API_KEY=your_api_key_here  
+NEXT_PUBLIC_BASE_URL=https://api.example.com  
 
-### `npm run eject`
+> 🚨 **Important:** Never commit `.env.local` files to Git! Add them to `.gitignore`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Deployment   
+npm install -g netlify-cli  
+netlify deploy  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🤝 Contributing  
+Want to contribute? Follow these steps:  
+1. Fork the repo  
+2. Create a new branch (`git checkout -b feature-name`)  
+3. Commit your changes (`git commit -m "Added a new feature"`)  
+4. Push to your branch (`git push origin feature-name`)  
+5. Open a pull request  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📜 License  
+This project is licensed under the [MIT License](LICENSE).  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📩 Contact  
+**Quan** – [@Dquan028](https://twitter.com/Dquan028)  
+Project Link: [GitHub Repo](https://github.com/DeeKayMA/reddit_micro.git)  
