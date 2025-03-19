@@ -1,3 +1,22 @@
+:root {
+  /* Light Mode */
+  --light-bg: #FAE6D0;
+  --light-card-bg: #FFF6ED;
+  --light-text: #1B1B1B;
+  --light-border: #1B1B1B;
+  --light-accent: #FF7F50;
+  --light-text-on-accent: #1B1B1B;
+
+  /* Dark Mode */
+  --dark-bg: #2B2A2A;
+  --dark-card-bg: #3A3535;
+  --dark-text: #FAE6D0;
+  --dark-border: #FAE6D0;
+  --dark-accent: #FF7F50;
+  --dark-text-on-accent: #1B1B1B;
+}
+
+
 /* Default styles for the App component. */
 .App {
   text-align: center;
