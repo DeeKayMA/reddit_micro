@@ -9,7 +9,7 @@
     background-color: light-dark(var(--light-card-bg), var(--dark-card-bg));
     color: light-dark(var(--light-text), var(--dark-text));
     cursor: pointer;
-    /* height: 40px; */
+    height: 100%;
 
 }
 

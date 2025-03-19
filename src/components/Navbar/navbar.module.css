@@ -1,34 +1,124 @@
+/* Navbar Style */
 .navbar{
     grid-area: navbar;
-    height: 72px;
+    height: 50px;
     background-color: light-dark(var(--light-bg), var(--dark-bg));
     color: light-dark(var(--light-text), var(--dark-text));
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 24px;
+    padding: 12px 24px;
     border-bottom: 1px solid light-dark(var(--light-border), var(--dark-border));
-    gap: 20px;
+    margin: 0;
+    gap: 32px;
 }
 
-.buttons{
-    display: flex;
-    gap: 8px;
+/* Search Bar Style */
+
+.searchBarContainer{
+    /* height: 24px; */
+    display:flex;
     flex-direction: row;
-
-}
-
-
-
-.searchBar{
-    height: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height:100%;
     width: 100%;
     max-width: 700px;
+    box-sizing: border-box;
     border-radius: 0px;
     border: 1px solid light-dark(var(--light-border), var(--dark-border));
     background-color: light-dark(var(--light-card-bg), var(--dark-card-bg));
     color: light-dark(var(--light-text), var(--dark-text));
     padding: 8px 16px;
+    margin: 0;
+}
+
+.searchBarContainer:focus-within{
+    outline: 1px solid light-dark(var(--light-accent), var(--dark-accent));
+    margin: 2px;
+
+}
+
+.searchBar{
+    width:100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: light-dark(var(--light-card-bg), var(--dark-card-bg));
+    color: light-dark(var(--light-text), var(--dark-text));
+    border: none;
     font-family: "Roboto Mono", monospace;
     font-optical-sizing: auto;
+    font-weight: 600;
+}
+
+.searchBar:focus{
+    outline: none;
+}
+
+.searchBar::placeholder{
+    color: light-dark(var(--light-text), var(--dark-text));
+    opacity: 0.5;
+}
+
+
+
+/* .searchBar:focus{
+    outline: 1px solid light-dark(var(--light-accent), var(--dark-accent));
+
+} */
+
+/*Logo Style*/
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+}
+
+.logoIcon{
+    height: 40px;
+    min-height: 40px;
+    width: 40px;
+    min-width: 40px;
+    border-radius: 0%;
+    margin: 0;
+    background-color: light-dark(var(--light-accent), var(--dark-accent));
+    box-shadow: 4px 4px light-dark(var(--light-border), var(--dark-border));
+    border: 1px solid light-dark(var(--light-border), var(--dark-border));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoText{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    margin: 0;
+    text-align: left;
+}
+
+
+/* Media Queries */
+
+/* Mobile devices */
+@media only screen and (max-width: 768px){
+    .lightDarkBtn{
+        display: none !important;
+    }
+}
+
+/* Tablet devices */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  
+}
+
+/* Desktop and larger device  */
+@media only screen and (min-width: 1025px){
+
 }
