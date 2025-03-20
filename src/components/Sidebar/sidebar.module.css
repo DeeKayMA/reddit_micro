@@ -1,8 +1,7 @@
 .sidebar{
-    grid-area: sidebar;
     background-color: light-dark(var(--light-bg), var(--dark-bg));
     padding: 12px 24px;
-    display: flex;
+    display:flex;
     flex-direction: column;
     gap: 20px;
 }
@@ -12,24 +11,34 @@
     font-size: 1rem;
     font-weight: 600;
 }
+/* Media Queries */
 
+/* Mobile devices */
 @media screen and (max-width: 768px){
     .sidebar{
+        display:flex;
+        flex-direction: column;
+        gap: 20px;
         border-top: 1px solid light-dark(var(--light-border), var(--dark-border));
     }
     
 }
 
+/* Tablet devices */
+
 @media screen and (min-width: 769px) and (max-width: 1024px){
     .sidebar{
+        grid-area: sidebar;
         border-right: 1px solid light-dark(var(--light-border), var(--dark-border));
         height: 100%;
     }
     
 }
 
+/* Desktop and larger device  */
 @media screen and (min-width: 1024px){
     .sidebar{
+        grid-area: sidebar;
         border-right: 1px solid light-dark(var(--light-border), var(--dark-border));
         height: 100%;
     }

@@ -38,7 +38,7 @@
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .App {
     display: grid;
-    grid-template: auto 1fr / 1fr 2.5fr;
+    grid-template: auto 1fr / 300px 1fr;
     grid-template-areas:
       "navbar navbar"
       "sidebar content";
@@ -49,7 +49,7 @@
 @media screen and (min-width: 1024px) {
   .App {
     display: grid;
-    grid-template: auto 1fr / 1fr 3fr; 
+    grid-template: auto 1fr / 350px 1fr; 
     /* rows/columns */
     grid-template-areas:
       "navbar navbar"
