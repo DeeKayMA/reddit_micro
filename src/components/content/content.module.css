@@ -1,3 +1,4 @@
 .content{
     grid-area: content;
+    padding: 12px 24px;
 }

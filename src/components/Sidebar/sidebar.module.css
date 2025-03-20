@@ -1,3 +1,37 @@
 .sidebar{
     grid-area: sidebar;
+    background-color: light-dark(var(--light-bg), var(--dark-bg));
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar h2{
+    color: light-dark(var(--light-text), var(--dark-text));
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px){
+    .sidebar{
+        border-top: 1px solid light-dark(var(--light-border), var(--dark-border));
+    }
+    
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px){
+    .sidebar{
+        border-right: 1px solid light-dark(var(--light-border), var(--dark-border));
+        height: 100%;
+    }
+    
+}
+
+@media screen and (min-width: 1024px){
+    .sidebar{
+        border-right: 1px solid light-dark(var(--light-border), var(--dark-border));
+        height: 100%;
+    }
+    
 }

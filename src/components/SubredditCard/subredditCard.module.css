@@ -1,0 +1,48 @@
+.subredditCard{
+    display: flex;
+    gap: 16px;
+    justify-content: left;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 0px;
+    border: 1px solid light-dark(var(--light-border), var(--dark-border));
+    background-color: light-dark(var(--light-card-bg), var(--dark-card-bg));
+    color: light-dark(var(--light-text), var(--dark-text));
+    cursor: pointer;
+    width: 100%;
+
+}
+
+.subredditCard:hover{
+    /* background-color: light-dark(var(--light-accent), var(--dark-accent)); */
+    box-shadow: 4px 4px light-dark(var(--light-border), var(--dark-border));
+
+}
+
+/* .subredditCard:active{
+    background-color: light-dark(var(--light-accent), var(--dark-accent));
+    color: light-dark(var(--light-text-on-accent), var(--dark-text-on-accent));
+ 
+} */
+
+.subredditCard.active{
+    background-color: light-dark(var(--light-accent), var(--dark-accent));
+    color: light-dark(var(--light-text-on-accent), var(--dark-text-on-accent));
+
+}
+.subredditCard.active:hover{
+    box-shadow: none;
+}
+
+img{
+    width: 24px;
+    height: 24px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+    font-family: "Roboto Mono", monospace, sans-serif;
+    font-optical-sizing: auto;
+}

@@ -20,6 +20,11 @@
 }
 
 .button:active{
+    /* background-color: light-dark(var(--light-accent), var(--dark-accent)); */
+    color: light-dark(var(--light-text-on-accent), var(--dark-text-on-accent));
+}
+
+.button.active{
     background-color: light-dark(var(--light-accent), var(--dark-accent));
     color: light-dark(var(--light-text-on-accent), var(--dark-text-on-accent));
 }

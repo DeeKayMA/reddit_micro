@@ -4,7 +4,7 @@ import UserPost from '../UserPost/userPost';
 const Content = () => {
     return(
         <div className={styles.content}>
-            <h1>Content</h1>
+            <h2>Main Content</h2>
             <UserPost />
         </div>
     )
