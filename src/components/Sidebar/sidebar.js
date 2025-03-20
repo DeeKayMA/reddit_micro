@@ -2,7 +2,7 @@ import { useState } from "react";
 import SubredditCard from "../SubredditCard/subredditCard";
 import styles from "./sidebar.module.css";
 
-const Sidebar = () => {
+const Sidebar = (className) => {
   //Track active card
   const [activeCard, setActiveCard] = useState(null);
 
@@ -15,7 +15,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${className ? className : ""}`}>
       <h2>Subreddits</h2>
       <SubredditCard
         children="r/All the motherfucking posts you need nigga, literally all of them"

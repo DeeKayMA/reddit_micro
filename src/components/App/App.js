@@ -7,9 +7,9 @@ import Content from '../content/content';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Sidebar />
-      <Content />
+      <Navbar className="navbar"/>
+      <Sidebar className="sidebar"/>
+      <Content className="content" />
     </div>
   );
 }
