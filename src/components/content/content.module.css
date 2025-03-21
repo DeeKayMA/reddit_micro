@@ -1,4 +1,8 @@
 .content{
     grid-area: content;
-    padding: 12px 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
 }

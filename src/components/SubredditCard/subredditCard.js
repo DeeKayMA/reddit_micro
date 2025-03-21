@@ -5,10 +5,6 @@ const SubredditCard = ({ children, image, onClick, className, active }) => {
     const handleClick = () => {
         onClick()
     };
-
-    // if(children.length > 20){
-    //     children = children.substring(0, 20) + '...';
-    // }
         
 
   return (

@@ -3,15 +3,17 @@
     gap: 8px;
     justify-content: center;
     align-items: center;
-    padding: 8px 16px;
+    padding: 8px;
     border-radius: 0px;
     border: 1px solid light-dark(var(--light-border), var(--dark-border));
     background-color: light-dark(var(--light-card-bg), var(--dark-card-bg));
     color: light-dark(var(--light-text), var(--dark-text));
     cursor: pointer;
     height: 100%;
-
+    font-family: "Roboto Mono", monospace, sans-serif;
+    font-optical-sizing: auto;
 }
+
 
 .button:hover{
     /* background-color: light-dark(var(--light-accent), var(--dark-accent)); */

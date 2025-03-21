@@ -4,6 +4,7 @@
     display:flex;
     flex-direction: column;
     gap: 20px;
+    
 }
 
 .sidebar h2{
@@ -32,6 +33,7 @@
         grid-area: sidebar;
         border-right: 1px solid light-dark(var(--light-border), var(--dark-border));
         height: 100%;
+        overflow-y: auto;
     }
     
 }
@@ -42,6 +44,7 @@
         grid-area: sidebar;
         border-right: 1px solid light-dark(var(--light-border), var(--dark-border));
         height: 100%;
+        overflow-y: auto;
     }
     
 }
