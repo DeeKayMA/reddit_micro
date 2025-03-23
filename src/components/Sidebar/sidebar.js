@@ -18,7 +18,7 @@ const Sidebar = (className) => {
     <aside className={`${styles.sidebar} ${className ? className : ""}`}>
       <h2>Subreddits</h2>
       <SubredditCard
-        children="r/All the motherfucking posts you need nigga, literally all of them"
+        children="r/All"
         image="logo192.png"
         id="card1"
         onClick={() => handleCardClick("card1")}

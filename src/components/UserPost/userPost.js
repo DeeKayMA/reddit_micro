@@ -1,5 +1,6 @@
 import styles from "./userPost.module.css";
 import Button from "../Button/button";
+import { useState } from "react";
 
 const arrowUpSvg = (
   <svg
@@ -62,51 +63,95 @@ const shareSvg = (
   </svg>
 );
 
-// Up Arrow on click function 
-const upArrowClick = () => {}
 
-// Down Arrow on click function
-const downArrowClick = () => {}
+// Need a  formula that looks at the state of the upvote/downvote button and if active is true then return the value of upVoteCommentCount or downVoteCommentCount 
+const checkForVote = () => {};
+
 
 // Comment on click function - should toggle the comments from being hidden or not and fetch them from reddit API
-const commentCount = 0;
 const commentClick = () => {}
 
 // Share on click function
 const shareClick = () => {}
 
 
-const UserPost = () => {
+
+//COMPOENTNT STARTS HERE 
+const UserPost = ({postImage, postImageAlt, postText, subredditName, subredditImage, subredditImageAlt, postTime, voteCount} ) => {
+
+    //UPVOTE & DOWNVOTE
+        // Set states of upvote and downvote buttons
+        const [upvoteActive, setUpvoteActive] = useState(false);
+        const [downvoteActive, setDownvoteActive] = useState(false);
+
+        // Vote count
+        const votes = voteCount; //Later get this number from Reddit
+        const [liveVoteCount, setLiveVoteCount] = useState(votes);
+
+        // Handle click for upvote
+        const handleUpvoteClick = () => {
+            if (upvoteActive) {
+                setUpvoteActive(false); //Set upvote to false
+                setLiveVoteCount(votes); //Set comment count back to original
+            } else {
+                setUpvoteActive(true); //Set upvote to true
+                setDownvoteActive(false); //Set downvote to false 
+                setLiveVoteCount(votes+1); //Set comment count up by 1
+
+            }
+        };
+
+        // Handle click for downvote 
+        const handleDownvoteClick = () => {
+            if (downvoteActive) {
+                setDownvoteActive(false); //Set downvote to false
+                setLiveVoteCount(votes); //Set comment count back to original
+
+            } else {
+                setDownvoteActive(true); //Set downvote to true
+                setUpvoteActive(false); //Set upvote to false
+                setLiveVoteCount(votes-1); //Set comment count up by 1
+
+            }
+        };
+
+    //Comments
+    const commentCount = 0
+
+
+
   return (
     <div className={styles.userPost}>
       {/* Subreddit image, name and post hours go here */}
       <div className={styles.postInfo}>
-        <img src="/logo512.png" alt="Subreddit Image" className={styles.subredditImage} />
-        <p className={styles.subredditName}>r/All</p>
+        <img src={subredditImage} alt={subredditImageAlt} className={styles.subredditImage} />
+        <p className={styles.subredditName}>{subredditName}</p>
         <p className={styles.interpunct}>·</p>
-        <p className={styles.postHours}>2 hours ago</p>
+        <p className={styles.postHours}>{postTime}</p>
       </div>
       {/* Post image goes here */}
-      <img src="https://images.unsplash.com/photo-1742226111386-b6a84ef8e660?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Post Image" className={styles.postImage} />
+      <img src={postImage} alt={postImageAlt} className={styles.postImage} />
       {/* Post content goes here */}
-      <p class={styles.postContent}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor interdum congue. Fusce porta diam et nibh vestibulum gravida. Phasellus.</p>
+      <p class={styles.postContent}>{postText}</p>
 
       {/* POST ACTIONS */}
       <div className={styles.postActions}>
         {/* Left side of the post actions */}
         <div className={styles.leftActions}>
-          <Button icon={arrowUpSvg} onclick={upArrowClick} className="" isActive={false} />
-          <p className={styles.likeCount}>000</p>
-          <Button icon={arrowDownSvg} onclick={downArrowClick} className="" isActive={false}/>
+            {/* Upvote */}
+          <Button icon={arrowUpSvg} onclick={handleUpvoteClick} className="" isActive={upvoteActive} />
+          <p className={styles.likeCount}>{liveVoteCount}</p>
+          {/* Downvote */}
+          <Button icon={arrowDownSvg} onclick={handleDownvoteClick} className="" isActive={downvoteActive}/>
         </div>
         {/* Right side of the post actions */}
         <div className={styles.rightActions}>
           <Button children={commentCount} icon={commentSvg} onclick={commentClick} className="" isActive={false}></Button>
-          <Button icon={shareSvg} onclick={shareClick} className="" isActive={false}/>
+          {/* <Button icon={shareSvg} onclick={shareClick} className="" isActive={false}/> */}
         </div>
       </div>
       {/* COMMENTS */}
-      <div className={`${styles.comments} ${styles.hidden}`}></div>
+      <div className={`${styles.comments} ${styles.hidden}`}>{commentCount}</div>
     </div>
   );
 };

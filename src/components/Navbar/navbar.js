@@ -70,7 +70,7 @@ const Navbar = () => {
   //  const text = theme === "light" ? "Dark Mode" : "Light Mode";
 
   return (
-    <nav className={styles.navbar}>
+    <header className={styles.navbar}>
       {/* Logo */}
       <div className={styles.logo}>
         <div className={styles.logoIcon}>{redditSvg}</div>
@@ -107,7 +107,7 @@ const Navbar = () => {
         onclick={toggleTheme}
         className={styles.lightDarkBtn}
       />
-    </nav>
+    </header>
   );
 };
 export default Navbar;
