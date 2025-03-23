@@ -1,6 +1,7 @@
 import styles from "./userPost.module.css";
 import Button from "../Button/button";
 import { useState } from "react";
+import Comment from "../Comment/comment";
 
 const arrowUpSvg = (
   <svg
@@ -64,12 +65,6 @@ const shareSvg = (
 );
 
 
-// Need a  formula that looks at the state of the upvote/downvote button and if active is true then return the value of upVoteCommentCount or downVoteCommentCount 
-const checkForVote = () => {};
-
-
-// Comment on click function - should toggle the comments from being hidden or not and fetch them from reddit API
-const commentClick = () => {}
 
 // Share on click function
 const shareClick = () => {}
@@ -77,7 +72,7 @@ const shareClick = () => {}
 
 
 //COMPOENTNT STARTS HERE 
-const UserPost = ({postImage, postImageAlt, postText, subredditName, subredditImage, subredditImageAlt, postTime, voteCount} ) => {
+const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userImageAlt, postTime, voteCount} ) => {
 
     //UPVOTE & DOWNVOTE
         // Set states of upvote and downvote buttons
@@ -118,14 +113,25 @@ const UserPost = ({postImage, postImageAlt, postText, subredditName, subredditIm
     //Comments
     const commentCount = 0
 
+    //Show / Hide comments 
+    const [commentsVisible, setCommentsVisible] = useState(styles.hidden)
+    
+    let commentClick = () => {
+        if (commentsVisible === styles.hidden){
+            setCommentsVisible(styles.notHidden)
+        } else {
+            setCommentsVisible(styles.hidden)
+        }
+    };
+
 
 
   return (
     <div className={styles.userPost}>
       {/* Subreddit image, name and post hours go here */}
       <div className={styles.postInfo}>
-        <img src={subredditImage} alt={subredditImageAlt} className={styles.subredditImage} />
-        <p className={styles.subredditName}>{subredditName}</p>
+        <img src={userImage} alt={userImageAlt} className={styles.userImage} />
+        <p className={styles.userName}>{userName}</p>
         <p className={styles.interpunct}>·</p>
         <p className={styles.postHours}>{postTime}</p>
       </div>
@@ -151,7 +157,7 @@ const UserPost = ({postImage, postImageAlt, postText, subredditName, subredditIm
         </div>
       </div>
       {/* COMMENTS */}
-      <div className={`${styles.comments} ${styles.hidden}`}>{commentCount}</div>
+      <div className={`${styles.comments} ${commentsVisible}`}><Comment/></div>
     </div>
   );
 };

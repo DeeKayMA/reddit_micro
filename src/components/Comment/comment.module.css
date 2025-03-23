@@ -1,0 +1,38 @@
+p{
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid light-dark(var(--light-border), var(--dark-border));
+    padding: 20px 20px;
+    gap: 20px;
+}
+
+.userDetails, .commentDetails{
+    display: flex;
+    flex-direction: row;
+}
+
+.commentDetails{
+    justify-content: space-between;
+}
+
+.userDetails{
+    gap: 8px;
+}
+
+.commentInfo{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: small;
+}
+.interpunct{
+    font-size: 1.5rem !important;
+    line-height: 0.5em;
+}

@@ -50,8 +50,8 @@ Explain how users can interact with the app. Include screenshots or GIFs if poss
 ## 🔑 Environment Variables  
 Create a `.env.local` file and add:  
 
-NEXT_PUBLIC_API_KEY=your_api_key_here  
-NEXT_PUBLIC_BASE_URL=https://api.example.com  
+REACT_APP_API_KEY=your_api_key_here  
+REACT_APP_BASE_URL=https://api.example.com  
 
 > 🚨 **Important:** Never commit `.env.local` files to Git! Add them to `.gitignore`.
 
