@@ -2,6 +2,8 @@ import styles from "./userPost.module.css";
 import Button from "../Button/button";
 import { useState } from "react";
 import Comment from "../Comment/comment";
+import ReactTimeAgo from 'react-time-ago'
+
 
 const arrowUpSvg = (
   <svg
@@ -67,12 +69,12 @@ const shareSvg = (
 
 
 // Share on click function
-const shareClick = () => {}
+// const shareClick = () => {}
 
 
 
 //COMPOENTNT STARTS HERE 
-const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userImageAlt, postTime, voteCount} ) => {
+const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userImageAlt, postTime, voteCount, numComments} ) => {
 
     //UPVOTE & DOWNVOTE
         // Set states of upvote and downvote buttons
@@ -80,7 +82,7 @@ const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userI
         const [downvoteActive, setDownvoteActive] = useState(false);
 
         // Vote count
-        const votes = voteCount; //Later get this number from Reddit
+        const votes = voteCount; 
         const [liveVoteCount, setLiveVoteCount] = useState(votes);
 
         // Handle click for upvote
@@ -111,7 +113,7 @@ const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userI
         };
 
     //Comments
-    const commentCount = 0
+    const commentCount = numComments 
 
     //Show / Hide comments 
     const [commentsVisible, setCommentsVisible] = useState(styles.hidden)
@@ -124,6 +126,18 @@ const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userI
         }
     };
 
+    //format numbers to say K for thousands and M for millions 
+
+    const formatNumber = (num) => {
+      if (num >= 1_000_000){
+        return (num / 1000000).toFixed(1) + "M";
+      } else if (num >= 1_000) {
+        return (num / 1000).toFixed(1) + "K";
+      } return num
+    }
+
+    //format timestamp
+    const timeago = Date.parse
 
 
   return (
@@ -134,11 +148,13 @@ const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userI
         <p className={styles.userName}>{userName}</p>
         <p className={styles.interpunct}>·</p>
         <p className={styles.postHours}>{postTime}</p>
+        {/* <ReactTimeAgo date={postTime}/> */}
       </div>
-      {/* Post image goes here */}
-      <img src={postImage} alt={postImageAlt} className={styles.postImage} />
       {/* Post content goes here */}
-      <p class={styles.postContent}>{postText}</p>
+      <p className={styles.postContent}>{postText}</p>
+      {/* Post image goes here */}
+      {postImage && (<img src={postImage} alt={postImageAlt} className={styles.postImage} />)}
+      
 
       {/* POST ACTIONS */}
       <div className={styles.postActions}>
@@ -146,18 +162,20 @@ const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userI
         <div className={styles.leftActions}>
             {/* Upvote */}
           <Button icon={arrowUpSvg} onclick={handleUpvoteClick} className="" isActive={upvoteActive} />
-          <p className={styles.likeCount}>{liveVoteCount}</p>
+          <p className={styles.likeCount}>{formatNumber(liveVoteCount)}</p>
           {/* Downvote */}
           <Button icon={arrowDownSvg} onclick={handleDownvoteClick} className="" isActive={downvoteActive}/>
         </div>
         {/* Right side of the post actions */}
         <div className={styles.rightActions}>
-          <Button children={commentCount} icon={commentSvg} onclick={commentClick} className="" isActive={false}></Button>
+          <Button children={formatNumber(commentCount)} icon={commentSvg} onclick={commentClick} className="" isActive={false}></Button>
           {/* <Button icon={shareSvg} onclick={shareClick} className="" isActive={false}/> */}
         </div>
       </div>
       {/* COMMENTS */}
-      <div className={`${styles.comments} ${commentsVisible}`}><Comment/></div>
+      <div className={`${styles.comments} ${commentsVisible}`}>
+        <Comment/>
+        </div>
     </div>
   );
 };

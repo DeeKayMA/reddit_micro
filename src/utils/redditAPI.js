@@ -1,15 +1,17 @@
-import fetch from "node-fetch"; 
-import dotenv from "dotenv";
-
-dotenv.config();
+// import fetch from "node-fetch"; 
 
 
 // API call to get Reddit Access Token
 
 export const getRedditAccessToken = async () => {
 
-    const clientId = process.env.REDDIT_CLIENT_ID;
-    const clientSecret = process.env.REDDIT_CLIENT_SECRET;
+    const clientId = process.env.REACT_APP_REDDIT_CLIENT_ID;
+    const clientSecret = process.env.REACT_APP_REDDIT_CLIENT_SECRET;
+
+    if (!clientId || !clientSecret) {
+        console.error('Missing Reddit API credentials in .env file');
+        return null;
+    }
 
     const auth = btoa(`${clientId}:${clientSecret}`)
     const tokenUrl = 'https://www.reddit.com/api/v1/access_token';
@@ -19,7 +21,7 @@ export const getRedditAccessToken = async () => {
         const response = await fetch(tokenUrl, {
             method: 'POST',
             headers: {
-                'Authorization': `Basic ${auth}`,
+                Authorization: `Basic ${auth}`,
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams({
@@ -28,18 +30,17 @@ export const getRedditAccessToken = async () => {
         });
 
         if(!response.ok){
-            throw new Error('Failed to fetch token:', response.statusText)
+            throw new Error(`Failed to fetch token: ${response.statusText}`)
         }
 
         const data = await response.json();
-
         const accessToken = data.access_token;
 
         console.log(`Access Token: ${accessToken}`);
         return (accessToken)
 
     } catch (error) {
-        console.error('Error getting access token:', error);
+        console.error('Error getting access token:' + error);
         return (null);
     }
 };
@@ -66,7 +67,7 @@ export const getBestPosts = async (subreddit) => {
         return data.data.children; 
 
     } catch (error) {
-        console.error('Error getting posts:', error);
+        console.error('Error getting posts:' + error);
         return (null);
     }
 
@@ -77,7 +78,7 @@ export const getBestPosts = async (subreddit) => {
 
 export const getPostComments = async (subreddit, postId) => {
     const accessToken = await getRedditAccessToken();
-    const commentsUrl = `https://oauth.reddit.com/[/r/${subreddit}/comments/${postId}?limit=10?depth=1`
+    const commentsUrl = `https://oauth.reddit.com/r/${subreddit}/comments/${postId}?limit=10&depth=1`
 
     try {
 
@@ -96,7 +97,7 @@ export const getPostComments = async (subreddit, postId) => {
         return data[1].data.children;         
         
     } catch (error) {
-        console.error('Error getting post comments tree:', error);
+        console.error('Error getting post comments tree:' + error);
         return (null);
     }
 };
