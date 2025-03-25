@@ -4,11 +4,14 @@ import Navbar from '../Navbar/navbar';
 import Sidebar from '../Sidebar/sidebar';
 import Content from '../content/content';
 import {getBestPosts} from '../../utils/redditAPI';
+import { getPostComments } from "../../utils/redditAPI";
+
 
 
 function App() {
 
   // Fetch posts whenever the selected subreddit changes
+  // pass the search criteria from Navbar to the sidebar
   // pass the posts to the Content component
   // pass the subreddit to the Sidebar component
 

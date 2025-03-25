@@ -30,6 +30,11 @@
     line-height: 0.5em;
 }
 
+/* .postHours{
+    font-family: "Roboto Mono", monospace, sans-serif;
+    font-optical-sizing: auto;
+} */
+
 /* POST IMAGE */
 
 .postImage{
@@ -77,7 +82,7 @@
 
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 .notHidden{
@@ -86,5 +91,9 @@
 
 .comments{
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 20px;
 }
 

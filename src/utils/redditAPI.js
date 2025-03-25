@@ -40,10 +40,37 @@ export const getRedditAccessToken = async () => {
         return (accessToken)
 
     } catch (error) {
-        console.error('Error getting access token:' + error);
+        console.error('Error getting access token:', error);
         return (null);
     }
 };
+
+//API call to get Subreddit Image
+
+// export const getSubredditDetails = async (subreddit) => {
+//     const accessToken = await getRedditAccessToken();
+//     const subredditUrl = `https://oauth.reddit.com/r/${subreddit}/about`;
+
+//     try {
+//         const response = await fetch(subredditUrl, {
+//             method: 'GET',
+//             headers: {
+//                 'Authorization': `Bearer ${accessToken}`,
+//             },
+//         });
+
+//         if(!response.ok){
+//             throw new Error(`Failed to fetch subreddit image`)
+//         }
+
+//         const data = await response.json();
+//         return data.data.icon_img || data.data.community_icon || "Quan Made Logo.PNG"
+
+//     } catch (error) {
+//         console.error(`Error getting Subreddit Image for ${subreddit}:`, error);
+//         return ("Quan Made Logo.PNG");
+//     }
+// }
 
 //API call to get top 10 posts for each subreddit
 
@@ -67,7 +94,7 @@ export const getBestPosts = async (subreddit) => {
         return data.data.children; 
 
     } catch (error) {
-        console.error('Error getting posts:' + error);
+        console.error('Error getting posts:', error);
         return (null);
     }
 
@@ -94,11 +121,11 @@ export const getPostComments = async (subreddit, postId) => {
         }
 
         const data = await response.json();
-        return data[1].data.children;         
+        return data[1].data.children || [];         
         
     } catch (error) {
-        console.error('Error getting post comments tree:' + error);
-        return (null);
+        console.error('Error getting post comments tree:', error);
+        return ([]);
     }
 };
 

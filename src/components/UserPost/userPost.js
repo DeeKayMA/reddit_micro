@@ -2,8 +2,7 @@ import styles from "./userPost.module.css";
 import Button from "../Button/button";
 import { useState } from "react";
 import Comment from "../Comment/comment";
-import ReactTimeAgo from 'react-time-ago'
-
+import { getPostComments } from "../../utils/redditAPI";
 
 const arrowUpSvg = (
   <svg
@@ -66,79 +65,127 @@ const shareSvg = (
   </svg>
 );
 
-
-
 // Share on click function
 // const shareClick = () => {}
 
+//COMPOENTNT STARTS HERE
+const UserPost = ({
+  postImage,
+  postImageAlt,
+  postText,
+  userName,
+  userImage,
+  userImageAlt,
+  postTime,
+  voteCount,
+  numComments,
+  subreddit,
+  postId,
+}) => {
+  //UPVOTE & DOWNVOTE
+  // Set states of upvote and downvote buttons
+  const [upvoteActive, setUpvoteActive] = useState(false);
+  const [downvoteActive, setDownvoteActive] = useState(false);
 
+  // Vote count
+  const votes = voteCount;
+  const [liveVoteCount, setLiveVoteCount] = useState(votes);
 
-//COMPOENTNT STARTS HERE 
-const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userImageAlt, postTime, voteCount, numComments} ) => {
-
-    //UPVOTE & DOWNVOTE
-        // Set states of upvote and downvote buttons
-        const [upvoteActive, setUpvoteActive] = useState(false);
-        const [downvoteActive, setDownvoteActive] = useState(false);
-
-        // Vote count
-        const votes = voteCount; 
-        const [liveVoteCount, setLiveVoteCount] = useState(votes);
-
-        // Handle click for upvote
-        const handleUpvoteClick = () => {
-            if (upvoteActive) {
-                setUpvoteActive(false); //Set upvote to false
-                setLiveVoteCount(votes); //Set comment count back to original
-            } else {
-                setUpvoteActive(true); //Set upvote to true
-                setDownvoteActive(false); //Set downvote to false 
-                setLiveVoteCount(votes+1); //Set comment count up by 1
-
-            }
-        };
-
-        // Handle click for downvote 
-        const handleDownvoteClick = () => {
-            if (downvoteActive) {
-                setDownvoteActive(false); //Set downvote to false
-                setLiveVoteCount(votes); //Set comment count back to original
-
-            } else {
-                setDownvoteActive(true); //Set downvote to true
-                setUpvoteActive(false); //Set upvote to false
-                setLiveVoteCount(votes-1); //Set comment count up by 1
-
-            }
-        };
-
-    //Comments
-    const commentCount = numComments 
-
-    //Show / Hide comments 
-    const [commentsVisible, setCommentsVisible] = useState(styles.hidden)
-    
-    let commentClick = () => {
-        if (commentsVisible === styles.hidden){
-            setCommentsVisible(styles.notHidden)
-        } else {
-            setCommentsVisible(styles.hidden)
-        }
-    };
-
-    //format numbers to say K for thousands and M for millions 
-
-    const formatNumber = (num) => {
-      if (num >= 1_000_000){
-        return (num / 1000000).toFixed(1) + "M";
-      } else if (num >= 1_000) {
-        return (num / 1000).toFixed(1) + "K";
-      } return num
+  // Handle click for upvote
+  const handleUpvoteClick = () => {
+    if (upvoteActive) {
+      setUpvoteActive(false); //Set upvote to false
+      setLiveVoteCount(votes); //Set comment count back to original
+    } else {
+      setUpvoteActive(true); //Set upvote to true
+      setDownvoteActive(false); //Set downvote to false
+      setLiveVoteCount(votes + 1); //Set comment count up by 1
     }
+  };
 
-    //format timestamp
-    const timeago = Date.parse
+  // Handle click for downvote
+  const handleDownvoteClick = () => {
+    if (downvoteActive) {
+      setDownvoteActive(false); //Set downvote to false
+      setLiveVoteCount(votes); //Set comment count back to original
+    } else {
+      setDownvoteActive(true); //Set downvote to true
+      setUpvoteActive(false); //Set upvote to false
+      setLiveVoteCount(votes - 1); //Set comment count up by 1
+    }
+  };
 
+  //Comments
+  const commentCount = numComments;
+  const [comments, setComments] = useState([]);
+  const [loadingComments, setLoadingComments] = useState(false);
+
+  //Show / Hide comments
+  const [commentsVisible, setCommentsVisible] = useState(styles.hidden);
+
+  const commentClick = async () => {
+    if (commentsVisible === styles.hidden) {
+      // Show comments
+      setCommentsVisible(styles.notHidden);
+
+      // Fetch comments if not already loaded
+      if (comments.length === 0) {
+        setLoadingComments(true);
+        try {
+          const fetchedComments = await getPostComments(subreddit, postId); // Call API with subreddit and post ID
+          setComments(fetchedComments || []); // Ensure comments is always an array
+        } catch (error) {
+          console.error("Error fetching comments:", error);
+          setComments([]); // Set to an empty array on error
+        } finally {
+          setLoadingComments(false);
+        }
+      }
+    } else {
+      setCommentsVisible(styles.hidden);
+    }
+  };
+
+  //format numbers to say K for thousands and M for millions
+
+  const formatNumber = (num) => {
+    if (num >= 1_000_000) {
+      return (num / 1000000).toFixed(1) + "M";
+    } else if (num >= 1_000) {
+      return (num / 1000).toFixed(1) + "K";
+    }
+    return num;
+  };
+
+  //format timestamp
+  const timeAgoFormula = (utcSeconds, locale = "en") => {
+    const now = Date.now(); // Current time in milliseconds
+    const postTime = utcSeconds * 1000; // Convert UTC seconds to milliseconds
+    const diffInSeconds = Math.floor((now - postTime) / 1000); // Difference in seconds
+
+    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+
+    if (diffInSeconds < 60) {
+      return rtf.format(-diffInSeconds, "second");
+    } else if (diffInSeconds < 3600) {
+      const minutes = Math.floor(diffInSeconds / 60);
+      return rtf.format(-minutes, "minute");
+    } else if (diffInSeconds < 86400) {
+      const hours = Math.floor(diffInSeconds / 3600);
+      return rtf.format(-hours, "hour");
+    } else if (diffInSeconds < 2592000) {
+      const days = Math.floor(diffInSeconds / 86400);
+      return rtf.format(-days, "day");
+    } else if (diffInSeconds < 31536000) {
+      const months = Math.floor(diffInSeconds / 2592000);
+      return rtf.format(-months, "month");
+    } else {
+      const years = Math.floor(diffInSeconds / 31536000);
+      return rtf.format(-years, "year");
+    }
+  };
+
+  const timeAgo = timeAgoFormula(postTime);
 
   return (
     <div className={styles.userPost}>
@@ -147,35 +194,63 @@ const UserPost = ({postImage, postImageAlt, postText, userName, userImage, userI
         <img src={userImage} alt={userImageAlt} className={styles.userImage} />
         <p className={styles.userName}>{userName}</p>
         <p className={styles.interpunct}>·</p>
-        <p className={styles.postHours}>{postTime}</p>
-        {/* <ReactTimeAgo date={postTime}/> */}
+        <p className={styles.postHours}>{timeAgo}</p>
       </div>
       {/* Post content goes here */}
       <p className={styles.postContent}>{postText}</p>
       {/* Post image goes here */}
-      {postImage && (<img src={postImage} alt={postImageAlt} className={styles.postImage} />)}
-      
+      {postImage && (
+        <img src={postImage} alt={postImageAlt} className={styles.postImage} />
+      )}
 
       {/* POST ACTIONS */}
       <div className={styles.postActions}>
         {/* Left side of the post actions */}
         <div className={styles.leftActions}>
-            {/* Upvote */}
-          <Button icon={arrowUpSvg} onclick={handleUpvoteClick} className="" isActive={upvoteActive} />
+          {/* Upvote */}
+          <Button
+            icon={arrowUpSvg}
+            onclick={handleUpvoteClick}
+            className=""
+            isActive={upvoteActive}
+          />
           <p className={styles.likeCount}>{formatNumber(liveVoteCount)}</p>
           {/* Downvote */}
-          <Button icon={arrowDownSvg} onclick={handleDownvoteClick} className="" isActive={downvoteActive}/>
+          <Button
+            icon={arrowDownSvg}
+            onclick={handleDownvoteClick}
+            className=""
+            isActive={downvoteActive}
+          />
         </div>
         {/* Right side of the post actions */}
         <div className={styles.rightActions}>
-          <Button children={formatNumber(commentCount)} icon={commentSvg} onclick={commentClick} className="" isActive={false}></Button>
+          <Button
+            children={formatNumber(commentCount)}
+            icon={commentSvg}
+            onclick={commentClick}
+            className=""
+            isActive={false}
+          ></Button>
           {/* <Button icon={shareSvg} onclick={shareClick} className="" isActive={false}/> */}
         </div>
       </div>
       {/* COMMENTS */}
       <div className={`${styles.comments} ${commentsVisible}`}>
-        <Comment/>
-        </div>
+        {loadingComments ? (
+          <p>Loading comments...</p>
+        ) : (
+          comments.map((comment) => (
+
+            <Comment
+              key={comment.data.id}
+              userName={`u/${comment.data.author}`}
+              commentText={comment.data.body}
+              voteCount={comment.data.score}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 };
