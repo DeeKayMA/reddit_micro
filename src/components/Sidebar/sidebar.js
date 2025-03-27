@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import SubredditCard from "../SubredditCard/subredditCard";
 import styles from "./sidebar.module.css";
 // import {getSubredditDetails} from '../../utils/redditAPI';
 
-const Sidebar = ({className, onSelect, onResetActiveCard}) => {
+const Sidebar = ({className, onSelect}) => {
 
   const subreddits = ['all' ,'javascript', 'reactjs', 'webdev', 'programming', 'node', 'css', 'frontend', 'web_design', 'learnprogramming', 'design'];
 
@@ -21,7 +21,6 @@ const Sidebar = ({className, onSelect, onResetActiveCard}) => {
    const handleKeyDown = (event) => {
     if (event.target.tagName === "INPUT" && event.key === "Enter") {
       setActiveCard(null); // Reset active card
-      if (onResetActiveCard) onResetActiveCard(); // Optional callback
     }
   };
 
