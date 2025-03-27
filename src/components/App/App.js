@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     fetchPosts(selectedSubreddit);
-  }, []);
+  }, [selectedSubreddit]);
 
   const handleSearch = (searchQuery) => {
     fetchPosts(searchQuery);
