@@ -49,7 +49,7 @@ const moonSvg = (
   </svg>
 );
 
-const Navbar = () => {
+const Navbar = ({onSearch}) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   // Apply the theme at start and whenever it changes
@@ -68,6 +68,10 @@ const Navbar = () => {
 
   // Set text based on theme: if light mode, show moon, if dark mode, show sun
   //  const text = theme === "light" ? "Dark Mode" : "Light Mode";
+
+
+  // We need an on enter event that pushes the value of search bar to onSelect 
+
 
   return (
     <header className={styles.navbar}>
@@ -94,10 +98,21 @@ const Navbar = () => {
             fill="currentColor"
           ></path>
         </svg>
+        <p>r/</p>
         <input
           type="text"
-          placeholder="r/RedditMicro"
+          placeholder="search for subreddit"
           className={styles.searchBar}
+          onKeyDown={(e) => {
+            if (e.key === "Enter"){
+              const value = e.target.value.trim();
+              if (value) {
+                onSearch(value);
+                // e.target.value = "";
+              }
+            }
+          }}
+
         />
       </div>
 

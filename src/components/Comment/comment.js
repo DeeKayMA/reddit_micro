@@ -11,7 +11,7 @@ const Comment = ({userName, commentText}) => {
         {/* <p className={styles.postHours}>2 hours ago</p> */}
       </div>
       {/* Comment */}
-      <p>
+      <p className={styles.commentContent}>
           {commentText}
       </p>
     </div>

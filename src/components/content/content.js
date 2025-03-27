@@ -23,14 +23,11 @@ const Content = ({className, posts}) => {
         const postImage = postData.preview?.images[0]?.source?.url || null;
         const postTime = postData.created_utc;
         const userName = `u/${postData.author}`;
-        const userImage = post.data.thumbnail
+        const userImage = post.data.thumbnail || null;
         const voteCount = postData.score;
         const commentCount = postData.num_comments;
         const subreddit = postData.subreddit; // Get subreddit name
         const postId = postData.id; // Get post ID
-
-        console.log(`Post ID: ${postData.id}, Post Image URL: ${postImage}`);
-
 
         return(
         <UserPost 

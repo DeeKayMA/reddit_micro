@@ -1,17 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SubredditCard from "../SubredditCard/subredditCard";
 import styles from "./sidebar.module.css";
 // import {getSubredditDetails} from '../../utils/redditAPI';
 
-const Sidebar = ({className, onSelect}) => {
+const Sidebar = ({className, onSelect, onResetActiveCard}) => {
 
   const subreddits = ['all' ,'javascript', 'reactjs', 'webdev', 'programming', 'node', 'css', 'frontend', 'web_design', 'learnprogramming', 'design'];
 
   //Track active card
   const [activeCard, setActiveCard] = useState(subreddits[0]);
-
-  // The search bar should set the active card to the swarch query, when enter is hit
-
 
   //Function to toggle active class
   const handleCardClick = (id) => {
@@ -20,27 +17,24 @@ const Sidebar = ({className, onSelect}) => {
     onSelect(id)
   };
 
-  // //Store subreddit images
-  const [subredditImages, setSubredditImages] = useState([]);
+   // Function to handle keydown event
+   const handleKeyDown = (event) => {
+    if (event.target.tagName === "INPUT" && event.key === "Enter") {
+      setActiveCard(null); // Reset active card
+      if (onResetActiveCard) onResetActiveCard(); // Optional callback
+    }
+  };
 
-  //Fetch Subreddit Images
-  // useEffect(()=> {
-  //   const fetchSubredditImages = async () => {
-  //     const images = {};
-  //     for (const subreddit of subreddits){
-  //       try {
-  //         const image = await getSubredditDetails(subreddit);
-  //         images[subreddit] = image
+  // Add keydown event listener
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
 
-  //       } catch (error) {
-  //         console.error(`Failed to fetch image for subreddit ${subreddit}:`, error);
-  //         images[subreddit] = "Quan Made Logo.PNG"
-  //       }
-  //     }
-  //     setSubredditImages(images);
-  //   };
-  //   fetchSubredditImages()
-  // }, [subreddits])
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+
 
   return (
     <aside className={`${styles.sidebar} ${className ? className : ""}`}>

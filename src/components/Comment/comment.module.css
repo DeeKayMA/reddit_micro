@@ -13,19 +13,6 @@ p{
     box-sizing: border-box;
 }
 
-.userDetails, .commentDetails{
-    display: flex;
-    flex-direction: row;
-}
-
-.commentDetails{
-    justify-content: space-between;
-}
-
-.userDetails{
-    gap: 8px;
-}
-
 .commentInfo{
     display: flex;
     gap: 8px;
@@ -34,6 +21,13 @@ p{
     box-sizing: border-box;
     font-size: small;
 }
+
+.commentContent{
+    text-wrap: wrap;
+    overflow-wrap: anywhere;
+}
+
+
 .interpunct{
     font-size: 1.5rem !important;
     line-height: 0.5em;

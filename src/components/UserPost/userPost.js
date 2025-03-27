@@ -199,9 +199,9 @@ const UserPost = ({
       {/* Post content goes here */}
       <p className={styles.postContent}>{postText}</p>
       {/* Post image goes here */}
-      {postImage && (
+      {/* {postImage && (
         <img src={postImage} alt={postImageAlt} className={styles.postImage} />
-      )}
+      )} */}
 
       {/* POST ACTIONS */}
       <div className={styles.postActions}>

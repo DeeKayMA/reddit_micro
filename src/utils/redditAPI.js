@@ -47,30 +47,30 @@ export const getRedditAccessToken = async () => {
 
 //API call to get Subreddit Image
 
-// export const getSubredditDetails = async (subreddit) => {
-//     const accessToken = await getRedditAccessToken();
-//     const subredditUrl = `https://oauth.reddit.com/r/${subreddit}/about`;
+export const getSubredditDetails = async (subreddit) => {
+    const accessToken = await getRedditAccessToken();
+    const subredditUrl = `https://oauth.reddit.com/r/${subreddit}/about`;
 
-//     try {
-//         const response = await fetch(subredditUrl, {
-//             method: 'GET',
-//             headers: {
-//                 'Authorization': `Bearer ${accessToken}`,
-//             },
-//         });
+    try {
+        const response = await fetch(subredditUrl, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
 
-//         if(!response.ok){
-//             throw new Error(`Failed to fetch subreddit image`)
-//         }
+        if(!response.ok){
+            throw new Error(`Failed to fetch subreddit image`)
+        }
 
-//         const data = await response.json();
-//         return data.data.icon_img || data.data.community_icon || "Quan Made Logo.PNG"
+        const data = await response.json();
+        return data.data.children || null;
 
-//     } catch (error) {
-//         console.error(`Error getting Subreddit Image for ${subreddit}:`, error);
-//         return ("Quan Made Logo.PNG");
-//     }
-// }
+    } catch (error) {
+        console.error(`Error getting Subreddit Image for ${subreddit}:`, error);
+        return (null);
+    }
+}
 
 //API call to get top 10 posts for each subreddit
 
