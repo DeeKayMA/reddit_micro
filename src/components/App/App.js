@@ -10,8 +10,7 @@ function App() {
   // pass the posts to the Content component
   // pass the subreddit to the Sidebar component
 
-  const defaultSubreddit = "all";
-  const [selectedSubreddit, setSelectedSubreddit] = useState(null);
+  const [selectedSubreddit, setSelectedSubreddit] = useState('all');
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async (subreddit) => {
@@ -28,7 +27,7 @@ function App() {
 
 
   useEffect(() => {
-    fetchPosts(defaultSubreddit);
+    fetchPosts(selectedSubreddit);
   }, []);
 
   const handleSearch = (searchQuery) => {
