@@ -1,10 +1,10 @@
 # Reddit Micro
 
-![Project Banner](https://via.placeholder.com/1200x400.png?text=Project+Banner)  
-_A mini Reddit client_
+<!-- ![Project Banner](https://via.placeholder.com/1200x400.png?text=Project+Banner)   -->
+_A mini Reddit client _
 
 ## 🚀 Live Demo  
-[🔗 Click here to view the live project](#)  
+[🔗 Click here to view the live project](https://redditmicro.netlify.app/)  
 
 ## 📖 Table of Contents  
 - [About the Project](#about-the-project)  
@@ -22,8 +22,8 @@ A mini Reddit client for Codecademy's Front End Engineering career pathway
 
 ## 🛠 Tech Stack  
 - **Framework:** [React](https://react.dev/)
-- **State Management:** Redux
-- **Backend (if applicable):** Node.js
+<!-- - **State Management:** Redux
+- **Backend (if applicable):** Node.js -->
 - **API:** Reddit API
 
 ## ⚡ Installation  
