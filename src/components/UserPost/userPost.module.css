@@ -18,16 +18,24 @@
 /* POST HEADER */
 .postInfo{
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
     font-size: small;
+
+    
 }
 
 .interpunct{
     font-size: 1.5rem !important;
     line-height: 0.5em;
+
+    /* @media only screen and (max-width: 768px ){
+        display: none;
+        
+    } */
 }
 
 /* .postHours{
