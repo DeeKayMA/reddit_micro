@@ -14,12 +14,16 @@
     font-optical-sizing: auto;
 }
 
-
-.button:hover{
-    /* background-color: light-dark(var(--light-accent), var(--dark-accent)); */
-    box-shadow: 4px 4px light-dark(var(--light-border), var(--dark-border));
-
+@media only screen and (min-width: 769px) {
+    .button:hover{
+        /* background-color: light-dark(var(--light-accent), var(--dark-accent)); */
+        box-shadow: 4px 4px light-dark(var(--light-border), var(--dark-border));
+    
+    } 
 }
+
+
+
 
 .button:active{
     /* background-color: light-dark(var(--light-accent), var(--dark-accent)); */

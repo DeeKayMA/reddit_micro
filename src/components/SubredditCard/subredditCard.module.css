@@ -13,11 +13,14 @@
 
 }
 
-.subredditCard:hover{
-    /* background-color: light-dark(var(--light-accent), var(--dark-accent)); */
-    box-shadow: 4px 4px light-dark(var(--light-border), var(--dark-border));
-
+@media only screen and (min-width: 769px) {
+    .subredditCard:hover{
+        box-shadow: 4px 4px light-dark(var(--light-border), var(--dark-border));
+    
+    } 
 }
+
+
 
 /* .subredditCard:active{
     background-color: light-dark(var(--light-accent), var(--dark-accent));
