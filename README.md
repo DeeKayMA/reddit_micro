@@ -1,7 +1,6 @@
 # Reddit Micro
 
 ![Project Banner](https://redditmicro.netlify.app/Reddit%20Micro%20Screenshot.png)  
-A mini Reddit client
 
 ## 🚀 Live Demo  
 [🔗 Click here to view the live project](https://redditmicro.netlify.app/)  
