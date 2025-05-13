@@ -1,7 +1,7 @@
 # Reddit Micro
 
 <!-- ![Project Banner](https://via.placeholder.com/1200x400.png?text=Project+Banner)   -->
-_A mini Reddit client _
+A mini Reddit client
 
 ## 🚀 Live Demo  
 [🔗 Click here to view the live project](https://redditmicro.netlify.app/)  
@@ -46,7 +46,7 @@ cd reddit_micro
 
 ### 2️⃣ Install Dependencies  
 npm install  
-# or  
+#### or  
 yarn install  
 
 ### 3️⃣ Start the Development Server  
