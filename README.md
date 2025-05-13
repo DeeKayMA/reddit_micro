@@ -1,6 +1,6 @@
 # Reddit Micro
 
-<!-- ![Project Banner](https://via.placeholder.com/1200x400.png?text=Project+Banner)   -->
+![Project Banner](https://redditmicro.netlify.app/Reddit%20Micro%20Screenshot.png)  
 A mini Reddit client
 
 ## 🚀 Live Demo  
@@ -8,7 +8,7 @@ A mini Reddit client
 
 ## 📖 Table of Contents  
 - [About the Project](#-about-the-project)
-- [About the Project](#-features)  
+- [Features](#-features)  
 - [Tech Stack](#-tech-stack)  
 - [Installation](#-installation)  
 - [Environment Variables](#-environment-variables)  
