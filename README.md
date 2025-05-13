@@ -7,16 +7,14 @@ A mini Reddit client
 [🔗 Click here to view the live project](https://redditmicro.netlify.app/)  
 
 ## 📖 Table of Contents  
-- [About the Project](#about-the-project)
-- [About the Project](#features)  
-- [Tech Stack](#tech-stack)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Environment Variables](#environment-variables)  
-- [Deployment](#deployment)  
-- [Contributing](#contributing)  
-- [License](#license)  
-- [Contact](#contact)  
+- [About the Project](#-about-the-project)
+- [About the Project](#-features)  
+- [Tech Stack](#-tech-stack)  
+- [Installation](#-installation)  
+- [Environment Variables](#-environment-variables)  
+- [Contributing](#-contributing)  
+- [License](#-license)  
+- [Contact](#-contact)  
 
 ## 📌 About the Project  
 A minimalist Reddit viewer built with React, featuring a brutalist UI. Easily explore the top 10 posts from any subreddit and dive into their top 10 comments—no login, no fluff.
@@ -51,7 +49,7 @@ yarn install
 
 ### 3️⃣ Start the Development Server  
 npm start
-# or
+##### or
 yarn start 
 
 Visit http://localhost:3000 in your browser.
