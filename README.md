@@ -74,5 +74,5 @@ Want to contribute? Follow these steps:
 This project is licensed under the [MIT License](LICENSE).  
 
 ## 📩 Contact  
-**Quan** – [@Dquan028](https://twitter.com/Dquan028)  
-Project Link: [GitHub Repo](https://github.com/DeeKayMA/reddit_micro.git)  
+**Portfolio :** [See my other projects](https://diquan.net)  
+**Project Link :** [GitHub Repo](https://github.com/DeeKayMA/reddit_micro.git)  
