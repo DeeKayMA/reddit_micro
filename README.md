@@ -6,7 +6,7 @@ A mini Reddit client
 ## 🚀 Live Demo  
 [🔗 Click here to view the live project](https://redditmicro.netlify.app/)  
 
-<!-- ## 📖 Table of Contents  
+## 📖 Table of Contents  
 - [About the Project](#about-the-project)
 - [About the Project](#features)  
 - [Tech Stack](#tech-stack)  
@@ -16,7 +16,7 @@ A mini Reddit client
 - [Deployment](#deployment)  
 - [Contributing](#contributing)  
 - [License](#license)  
-- [Contact](#contact)   -->
+- [Contact](#contact)  
 
 ## 📌 About the Project  
 A minimalist Reddit viewer built with React, featuring a brutalist UI. Easily explore the top 10 posts from any subreddit and dive into their top 10 comments—no login, no fluff.
