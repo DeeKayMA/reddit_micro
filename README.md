@@ -6,8 +6,9 @@ _A mini Reddit client _
 ## 🚀 Live Demo  
 [🔗 Click here to view the live project](https://redditmicro.netlify.app/)  
 
-## 📖 Table of Contents  
-- [About the Project](#about-the-project)  
+<!-- ## 📖 Table of Contents  
+- [About the Project](#about-the-project)
+- [About the Project](#features)  
 - [Tech Stack](#tech-stack)  
 - [Installation](#installation)  
 - [Usage](#usage)  
@@ -15,16 +16,26 @@ _A mini Reddit client _
 - [Deployment](#deployment)  
 - [Contributing](#contributing)  
 - [License](#license)  
-- [Contact](#contact)  
+- [Contact](#contact)   -->
 
 ## 📌 About the Project  
-A mini Reddit client for Codecademy's Front End Engineering career pathway 
+A minimalist Reddit viewer built with React, featuring a brutalist UI. Easily explore the top 10 posts from any subreddit and dive into their top 10 comments—no login, no fluff.
+
+## ✅ Features
+- Search any subreddit
+- Suggested subreddits to explore with one click
+- Top 10 posts per subreddit
+- Top 10 comments per post
+- Upvote/downvote subreddits for fun
+- Minimalistic brutalist UI for a clean, raw experience
+- Fully client-side – no backend, no authentication  
 
 ## 🛠 Tech Stack  
 - **Framework:** [React](https://react.dev/)
-<!-- - **State Management:** Redux
-- **Backend (if applicable):** Node.js -->
-- **API:** Reddit API
+- **State Management:** Redux
+<!-- - **Backend (if applicable):** Node.js -->
+- **Styling:** CSS (custom minimal brutalist style)
+- **Fetch API:** Reddit API
 
 ## ⚡ Installation  
 
@@ -39,13 +50,11 @@ npm install
 yarn install  
 
 ### 3️⃣ Start the Development Server  
-npm start  # React  
+npm start
+# or
+yarn start 
 
-## 📌 Usage  
-Explain how users can interact with the app. Include screenshots or GIFs if possible.  
-- Search for Reddit posts
-- Filter Subreddit
-- See live Reddit posts  
+Visit http://localhost:3000 in your browser.
 
 ## 🔑 Environment Variables  
 Create a `.env.local` file and add:  
@@ -54,10 +63,7 @@ REACT_APP_API_KEY=your_api_key_here
 REACT_APP_BASE_URL=https://api.example.com  
 
 > 🚨 **Important:** Never commit `.env.local` files to Git! Add them to `.gitignore`.
-
-## 🚀 Deployment   
-npm install -g netlify-cli  
-netlify deploy  
+ 
 
 ## 🤝 Contributing  
 Want to contribute? Follow these steps:  
